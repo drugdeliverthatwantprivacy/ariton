@@ -12,16 +12,8 @@ interface AnonymousIdentity {
 
 export class IdentityService {
   private static instance: IdentityService;
-  private generator: IdentityGenerator | null = null;
 
-  private constructor() {
-    this.initialize();
-  }
-
-  private async initialize() {
-    await initWasm();
-    this.generator = new IdentityGenerator();
-  }
+  private constructor() {}
 
   static getInstance(): IdentityService {
     if (!IdentityService.instance) {
@@ -31,10 +23,15 @@ export class IdentityService {
   }
 
   async generateRandomIdentity(): Promise<AnonymousIdentity> {
-    if (!this.generator) {
-      throw new Error('Identity generator not initialized');
-    }
-
-    return this.generator.generate_identity();
+    // Implementación temporal
+    return {
+      username: "usuario123",
+      displayName: "Usuario Anónimo",
+      avatarEmoji: "🦊",
+      colorScheme: {
+        primary: "#1976d2",
+        secondary: "#dc004e"
+      }
+    };
   }
 } 

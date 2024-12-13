@@ -1,15 +1,19 @@
 import React from 'react';
-import { ThemeProvider, CssBaseline } from '@mui/material';
-import { theme } from './theme/theme';
-import { Router } from './router';
+import { Box, Container } from '@mui/material';
+import { AnonymousIdentitySelector } from './components/AnonymousIdentitySelector';
 
-const App: React.FC = () => {
+function App() {
+  const handleIdentitySelect = (identity: AnonymousIdentity) => {
+    console.log('Selected identity:', identity);
+  };
+
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Router />
-    </ThemeProvider>
+    <Container maxWidth="sm">
+      <Box sx={{ my: 4 }}>
+        <AnonymousIdentitySelector onSelect={handleIdentitySelect} />
+      </Box>
+    </Container>
   );
-};
+}
 
 export default App; 
